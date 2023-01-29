@@ -47,25 +47,25 @@ class Trip{
     public function getName(){
         return $this->name;
     }
-    public function start_Location(){
+    public function getStart_Location(){
         return $this->start_Location;
     }
-    public function destination(){
+    public function getDestination(){
         return $this->destination;
     }
-    public function start_Date(){
+    public function getStart_Date(){
         return $this->start_Date;
     }
-    public function end_Date(){
+    public function getEnd_Date(){
         return $this->end_Date;
     }
-    public function price(){
+    public function getPrice(){
         return $this->price;
     }
-    public function description(){
+    public function getDescription(){
         return $this->description;
     }
-    public function image(){
+    public function getImage(){
         return $this->image;
     }
     
