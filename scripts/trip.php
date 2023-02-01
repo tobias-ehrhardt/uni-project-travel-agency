@@ -2,33 +2,35 @@
 class Trip{
     //Artemi
     protected $name;
-    private $start_Location; 
+    private $startLocation;
     private $destination; 
-    private $start_Date; 
-    private $end_Date; 
+    private $startDate;
+    private $endDate;
     private $price; 
     private $description; 
     private $image;
+    private $id;
 
 
-    public function __construct($name, $start_Location, $destination, $start_Date, $end_Date, $price, $description, $image){
+    public function __construct($name, $startLocation, $destination, $startDate, $endDate, $price, $description, $image, $id){
         $this->name = $name;
-        $this->start_Location = $start_Location;
+        $this->startLocation = $startLocation;
         $this->destination = $destination;
-        $this->start_Date = $start_Date;
-        $this->end_Date = $end_Date;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
         $this->price = $price;
         $this->description = $description;
         $this->image = $image;
+        $this->id = $id;
     }
 
     public function saveTripData(){
-        require("database_connection");
+        require("database_connection.php");
         if($this->price == null){
             $this->price = 0; 
         }
         $stmt = $dbConnection->prepare("INSERT INTO trips (name, start_location, destination, start_date, end_date, price, description, image) VALUES (?,?,?,?,?,?,?,?)"); 
-        $stmt->execute(array($this->name, $this->start_Location,$this->destination,$this->start_Date,$this->end_Date,$this->price,$this->description,$this->image));
+        $stmt->execute(array($this->name, $this->startLocation,$this->destination,$this->startDate,$this->endDate,$this->price,$this->description,$this->image));
         header("Location:trip_manager.php");
     }
 
@@ -38,7 +40,7 @@ class Trip{
         $sql = "SELECT * FROM trips"; 
         $tripArray = array();
         foreach($dbConnection->query($sql) as $row){
-            $trip = new Trip($row["name"],$row["start_location"],$row["destination"],$row["start_date"],$row["end_date"],$row["price"],$row["description"],$row["image"]);
+            $trip = new Trip($row["name"],$row["start_location"],$row["destination"],$row["start_date"],$row["end_date"],$row["price"],$row["description"],$row["image"], $row['trip_id']);
             array_push($tripArray,$trip); 
         }
         return $tripArray;
@@ -47,17 +49,17 @@ class Trip{
     public function getName(){
         return $this->name;
     }
-    public function getStart_Location(){
-        return $this->start_Location;
+    public function getStartLocation(){
+        return $this->startLocation;
     }
     public function getDestination(){
         return $this->destination;
     }
-    public function getStart_Date(){
-        return $this->start_Date;
+    public function getStartDate(){
+        return $this->startDate;
     }
-    public function getEnd_Date(){
-        return $this->end_Date;
+    public function getEndDate(){
+        return $this->endDate;
     }
     public function getPrice(){
         return $this->price;
@@ -68,6 +70,10 @@ class Trip{
     public function getImage(){
         return $this->image;
     }
-    
+
+    public function getId(){
+        return $this->image;
+    }
+
 } 
 ?>
