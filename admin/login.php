@@ -1,4 +1,5 @@
 <?php
+//Tobias
 session_start();
 require("../scripts/database_connection.php");
 
@@ -26,6 +27,7 @@ if(isset($_GET['login'])) {
 </head>
 <body>
 <?php
+//Tobias
 if(isset($errorMessage)) {
     echo $errorMessage;
 }

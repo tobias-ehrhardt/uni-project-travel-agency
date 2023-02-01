@@ -8,9 +8,10 @@
 </head>
 <body>
 <?php
+    //Tobias
     require("scripts/trip_service.php");
     $TService = new TripService();
-    echo $TService->getTripById(2)->getName();
+
 ?>
 </body>
 </html>

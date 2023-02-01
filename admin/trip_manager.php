@@ -1,4 +1,5 @@
 <?php
+//Tobias
 session_start();
 if(!isset($_SESSION['user_id'])) {
     header('Location: login.php');
@@ -19,7 +20,7 @@ if(!isset($_SESSION['user_id'])) {
             <label>Name</label>
             <input type="text" name="name"> <br>
             <label>Start Location</label>
-            <input type="text" name="start_loaction"><br>
+            <input type="text" name="start_location"><br>
             <label>Destination</label>
             <input type="text" name="destination"><br>
             <label>Start Date</label>
@@ -40,9 +41,11 @@ if(!isset($_SESSION['user_id'])) {
     //Artemi
     require("../scripts/trip.php");
     if(isset($_POST["submit"])){
-        $trip1 = new Trip($_POST["name"],$_POST["start_loaction"],$_POST["destination"],$_POST["start_date"],$_POST["end_date"],$_POST["price"],$_POST["description"],$_POST["image"]);
+        $trip1 = new Trip($_POST["name"],$_POST["start_location"],$_POST["destination"],$_POST["start_date"],$_POST["end_date"],$_POST["price"],$_POST["description"],$_POST["image"]);
         $trip1->saveTripData();
     }
     ?>
+
+
 </body>
 </html> 

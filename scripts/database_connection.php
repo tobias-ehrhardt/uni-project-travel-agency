@@ -1,4 +1,5 @@
 <?php
+//Artemi
 $host = "localhost";
 $port = 5432;
 $db = "travel_agency";

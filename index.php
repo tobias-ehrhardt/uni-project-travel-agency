@@ -13,6 +13,7 @@
         <div class="search_filters"></div>
         <div class="search_results">
             <?php
+                //Tobias
                 require("scripts/trip_service.php");
                 $TService = new TripService();
                 $trips = $TService->getTripData("SELECT * FROM trips");

@@ -14,11 +14,12 @@ public function getTripData($sql){
     return $tripArray;
 }
 
-// Search nach ID ?
+// Tobias
 public function getTripById($id){
     return $this->getTripData("SELECT * FROM trips WHERE trip_id = " . $id)[0];
 }
 
+//Artemi
 public function deleteTripData($id){
     require("index.html");
     $stmt = $dbConnection->prepare("DELETE FROM trips WHERE id = ?");
