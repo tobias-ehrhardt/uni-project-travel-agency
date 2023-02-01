@@ -12,7 +12,7 @@ class Trip{
     private $id;
 
 
-    public function __construct($name, $startLocation, $destination, $startDate, $endDate, $price, $description, $image, $id){
+    public function __construct($name, $startLocation, $destination, $startDate, $endDate, $price, $description, $image){
         $this->name = $name;
         $this->startLocation = $startLocation;
         $this->destination = $destination;
@@ -21,7 +21,6 @@ class Trip{
         $this->price = $price;
         $this->description = $description;
         $this->image = $image;
-        $this->id = $id;
     }
 
     public function saveTripData(){
@@ -40,7 +39,7 @@ class Trip{
         $sql = "SELECT * FROM trips"; 
         $tripArray = array();
         foreach($dbConnection->query($sql) as $row){
-            $trip = new Trip($row["name"],$row["start_location"],$row["destination"],$row["start_date"],$row["end_date"],$row["price"],$row["description"],$row["image"], $row['trip_id']);
+            $trip = new Trip($row["name"],$row["start_location"],$row["destination"],$row["start_date"],$row["end_date"],$row["price"],$row["description"],$row["image"]);
             array_push($tripArray,$trip); 
         }
         return $tripArray;
@@ -70,10 +69,5 @@ class Trip{
     public function getImage(){
         return $this->image;
     }
-
-    public function getId(){
-        return $this->image;
-    }
-
-} 
+}
 ?>
